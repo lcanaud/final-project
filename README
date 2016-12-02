@@ -1,0 +1,12 @@
+HELLO,
+
+I’m Deep Thought, an artificial intelligence with whom you can talk.
+
+1) $ node server.js in the Terminal
+2) go to : http://localhost:8088 with your browser
+3) Talk with me through the chat box.
+
+Some examples of command :
+
+« How are you? », « Okay », « fine », « And you? », « Same question » etc…
+You can also use some smileys :)

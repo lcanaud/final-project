@@ -1,0 +1,120 @@
+<html>
+	<head>	
+		<title>Random Quizz!</title>	
+		<style>
+			/* CSS Styling */
+			#frame {
+				width: 30em;
+			}
+			textarea {
+				width: 100%;
+				border: 1px solid #888;
+				padding: 3px;
+			}
+			#inputs, #text_field {
+				width: 100%;
+			}
+
+			#button {
+				color: #418e98;
+			}
+
+			h1 {
+				font-size: 40px;
+				color: #418e98;
+				margin-left: 100px;
+				margin-top: 50px;
+				margin-bottom: 50px;
+				margin-right: 100px;
+			}
+
+			#choice {
+				margin-left: 30px;
+			}
+
+			#image {
+				text-align: center;
+			}
+
+			.button {
+				background-color: #418e98;
+			}
+
+			input[type=submit] {
+				width:100px;
+				background-color: #418e98;
+				color: white;
+				margin-top: 20px;
+				margin-bottom: 30px;
+				margin-left: 140px;
+				font-size: 16px;
+				font-family: Verdana;
+				font-style: bold;
+			}
+
+		</style>
+	</head>
+	<body>		
+		<!-- HTML -->
+		<h1>Random Quizz!</h1>
+
+		<div class="test_question">
+			<script>
+			console.log(question)
+			</script>	
+		</div>
+
+		<div id="image">
+			<img scr="http://www.wauchopeshowsociety.com.au/images/sl_website-under-construction.jpeg">
+		</div>
+
+		<div id='choice'>
+			<form action="random1">
+				<label>
+				<input type="radio" name="response" value="bouton response 1">
+				Responce 1 provisoire
+				</label>
+				<br>
+
+				<label>
+				<input type="radio" name="response" value="bouton response 2">
+				Responce 2 provisoire
+				</label>
+				<br>
+
+				<label>
+				<input type="radio" name="response" value="bouton response 3">
+				Responce 3 provisoire
+				</label>
+				<br>
+
+				<input type="submit" value="Next" onclick="send_message();" onKeyPress="if(event.keyCode == 13) validerForm();"/>
+
+			</form>	
+		</div>	
+		
+
+		<!-- SCRIPTS -->
+		<!-- import socket.io -->
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			// connect to localhost on its port (see server.js -- 8088)
+		  var socket = io().connect('http://localhost:8088');
+		  // when connecting 
+		  socket.on('connect', function (data) {
+		  	console.log('human connected');
+		  });
+		  // when receiving a custom message form the server ('message from robot')
+		  socket.on('message from robot', function(msg) {
+		  	document.getElementById("conversation").value += '> ' + msg + '\n';
+		  	console.log('robot message: ' + msg);
+		  });
+		  function send_message() {
+		  	var text = document.getElementById("text_field").value;
+		  	document.getElementById("conversation").value += '* ' + text + '\n';
+		  	socket.emit('message from human', text);
+		  	document.getElementById("text_field").value = '';
+		  }
+		</script>		
+	</body>
+</html>

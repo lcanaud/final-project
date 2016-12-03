@@ -30,7 +30,24 @@ var qst=new Array();
 var n=-1
 
 n++;qst[n]=new Array(10);
-qst[n][0]=
+
+//Questions arrays
+
+const wh_words = ["What", "Why", "How", "Where"];
+const nouns_tastes = ["cat", "colour", "plant", "day of the week"];
+const question_adjective = ["favourite", "beloved", ""]
+
+// Answer arrays
+/* here is the elememtns to buil answers. There is 2 types :
+ - dependting in the word used in the question (eg. colour)
+ - elements to build answers randomly generated.
+*/
+const person_answers = ["grand-ma", "UK prime minister", "dog", "your secret love", "an alien", "an unicorn"];
+const object_answers = [];
+const verbs = ["run into", "eat", "forget", "go with", ];
+const colour_answer = []
+const adverbs = ["magically", 'gently']
+
 
 /**
 * Picks a random element from an array
@@ -67,10 +84,29 @@ function validerForm(){
     document.getElementById("formulaire").submit();
 }
 
-function question(){
-  console.log("Ceci est un test en attendant de parametrer")
+function question_builder(){
+  
+  switch(choice([1, 2]))
+  {
+    case 1:
+      return choice(wh_words)+' is your'+choice(question_adjective)+' '+choice(nouns_tastes);
+
+    case 2:
+      return "What would you do if "+choice(person_answers)+' '+choice(verbs)+' '+choice(person_answers)+'?';
+  }
 }
 
+function answer_builder(){
+
+  switch(choice([1, 2]))
+  {
+    case 1:
+      return "I would "+choice(adverbs)+' '+choice(verbs)+' with '+choice(person_answers);
+
+    case 2:
+      return "I would"+choice(verbs)+' '+choice(person_answers)+" and "+choice(verbs)+' '+choice(object_answers);
+  }
+}
 
 
 

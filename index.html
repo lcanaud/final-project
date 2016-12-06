@@ -58,40 +58,38 @@
 	<body>		
 		<!-- HTML -->
 		<h1>Random Quizz!</h1>
+		<img scr="http://ekladata.com/E_YDtouTOtjPVEuaO8jRHdenEjc/image-defaut-random-quizz.jpg">
 
 		<div class="test_question">
-			<script>
-			console.log(question_builder)
-			</script>	
+			<label id="question_label">I want a question here !</label> 
 		</div>
 
-		<div id="image">
-			<img scr="http://www.wauchopeshowsociety.com.au/images/sl_website-under-construction.jpeg">
-		</div>
+		
 
 		<div id='choice'>
-			<form action="random1">
-				<label>
-				<input type="radio" name="response" value="bouton response 1">
+			
+				<input type="radio" id="radio1" name="response" value="bouton response 1">
+				<label id="response_1_label">				
 				Responce 1 provisoire
 				</label>
 				<br>
 
-				<label>
-				<input type="radio" name="response" value="bouton response 2">
+				<input type="radio" id="radio2" name="response" value="bouton response 2">
+				<label id="response_2_label">
 				Responce 2 provisoire
 				</label>
+				
 				<br>
 
-				<label>
-				<input type="radio" name="response" value="bouton response 3">
+				<input type="radio" id="radio3" name="response" value="bouton response 3">
+				<label id="response_3_label">				
 				Responce 3 provisoire
 				</label>
 				<br>
 
 				<input type="submit" value="Next" onclick="send_message();" onKeyPress="if(event.keyCode == 13) validerForm();"/>
 
-			</form>	
+			
 		</div>	
 		
 
@@ -105,16 +103,34 @@
 		  socket.on('connect', function (data) {
 		  	console.log('human connected');
 		  });
+
+		  // test display question
+		  
 		  // when receiving a custom message form the server ('message from robot')
 		  socket.on('message from robot', function(msg) {
-		  	document.getElementById("conversation").value += '> ' + msg + '\n';
-		  	console.log('robot message: ' + msg);
+		  	console.log('robot message: ' + JSON.stringify(msg));
+
+		  	document.getElementById("question_label").innerHTML = msg.question;
+		  	document.getElementById("response_1_label").innerHTML = msg.response_1;
+		  	document.getElementById("response_2_label").innerHTML = msg.response_2;
+		  	document.getElementById("response_3_label").innerHTML = msg.response_3;
+
+
 		  });
+
+
 		  function send_message() {
-		  	var text = document.getElementById("text_field").value;
-		  	document.getElementById("conversation").value += '* ' + text + '\n';
-		  	socket.emit('message from human', text);
-		  	document.getElementById("text_field").value = '';
+
+		  	var r1 = document.getElementById("radio1").checked;	
+		  	var r2 = document.getElementById("radio2").checked;
+		  	var r3 = document.getElementById("radio3").checked;
+		  	var q =  document.getElementById("question_label").innerHTML;
+
+		  	var message = { question: q, choice1: r1, choice2: r2, choice3: r3};
+
+		  	socket.emit('message from human', message);
+
+
 		  }
 		</script>		
 	</body>

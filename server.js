@@ -23,13 +23,10 @@ var io = require('socket.io')(server);	// npm install --save socket.io
 // import chance (http://chancejs.com)
 var chance = require('chance').Chance(); // npm install --save chance
 
-//Parameters for the Quizz
 
-var mix=0;
-var qst=new Array();
-var n=-1
-
-n++;qst[n]=new Array(10);
+var count_1 = 0;
+var count_2 = 0;
+var count_3 = 0;
 
 //Questions arrays
 
@@ -108,6 +105,17 @@ function answer_builder(){
   }
 }
 
+function display_question() {
+  return "is it okay ?";
+  }
+
+function make_choice2(previous_question) {
+
+
+
+  return {"question": question_builder(), "response_1": "haha", "response_2": "hééééé", "response_3": "hooooo"};
+
+}
 
 
 /* ----------------------------------
@@ -124,21 +132,35 @@ app.get('/', function (req, res) {
 io.on('connection', function(socket) {
 
   console.log('Somebody is here! ');
-
+ 
   
-  io.emit('message from robot', 'Hi! my name is Deep Thought!'); // greetings
+  io.emit('message from robot', {"question": "§§§§§§§§§§§§", "response_1": "oooo", "response_2": "llllll", "response_3": "pppppp"}); // greetings
+  
 
   // (2) configure the connected socket to receive custom messages ('message from human')
   // and call the function answer to produce a response
   socket.on('message from human', function(msg) {
 
-    console.log('You have a new message: ' + msg);
+    console.log('You have a new message: ' + JSON.stringify(msg));
 
-    var response = answer(msg);  	                  /// <--- call of the function answer defined above 
+    if(msg.choice2) {
 
-  	io.emit('message from robot', response);
+      console.log("choice2");
+
+      io.emit('message from robot', make_choice2(msg.question));
+    }
+
 
   });
+
+  /*socket.on ('somebody answered', function(ans) {
+
+    var reponse = question_builder(ans);
+
+     io.emit('new question', reponse);
+
+  });
+  */
 
   socket.on('disconnet', function() {
 

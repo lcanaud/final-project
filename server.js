@@ -32,7 +32,7 @@ var count_3 = 0;
 
 const wh_words = ["What", "Why", "How", "Where"];
 const will_verbs = ["want", "prefer", "try to", "chose", "argue to", "propose"];
-const belonging = ["my", "your", "a", "the"];
+const belonging = ["my ", "your ", "a ", "the ", "the ", "a ", "a "];
 
 // Answer arrays
 
@@ -45,34 +45,34 @@ const belonging = ["my", "your", "a", "the"];
 
 //Level 1 (something relatively normal)
 
-const characters1 = ["your primary school teacher", "your Grand-ma", "a cat", "a dog", "a squirrel ", "a ghost", "your secret love"]
-const verbs1 = ["eat", "go away", "leave", "give back", "run into"]
-const objects1 = ["a mathematic test", "a vase", "a bouquet of flowers" ]
-const adjectives1 = ["brilliant", "catastrophic", "ridiculus", "forgotten", "loved", "small", "little", "big", "enormous"]
+const characters1 = ["primary school teacher", "Grand-ma", "cat", "dog", "squirrel ", "ghost", "secret love"]
+const verbs1 = ["eat", "go away with", "curtomize", "give back", "run into"]
+const objects1 = ["mathematic test", "vase", "bouquet of flowers", "laptop", "slice of pizza", "cloud", "rain", "hat"]
+const adjectives1 = ["brilliant", "catastrophic", "ridiculus", "forgotten", "strange", "small", "little", "big", "enormous"]
 const adverbs1 = ["gently", "lovely", "kindly", "suddently"]
-const place1 = ["your bathroom", "a classroom", "the Dam", "Centraal Station", "a windmill", "the world", "your bed"]
+const place1 = ["a bathroom", "a classroom", "the Dam", "Centraal Station", "a windmill", "the world", "your bed"]
 const time1 = ["suddently", "on Monday", "on Wednesday", "on Sunday"]
 
 //Level 2 (something a bit creative)
 
-const characters2 = ["a pig", "your Grand-pa", "our Prime Minister", "a crocodile", "a gentleman", "a layer", "me"]
+const characters2 = ["pig", "Grand-pa", "Prime Minister", "crocodile", "gentleman", "lawyer", "me"]
 const verbs2 = ["ride", "be proud of", "congratulates", "get married with", "forget"]
-const objects2 = []
+const objects2 = ["apple pie", "film", "movie", "Youtube video", "illusion"]
 const adjectives2 = ["unexpected", "brilliant", "catastrophic", "weak", "kind", "cute"]
 const adverbs2 = ["unbelievably", "suddently"]
 const place2 = ["the world", "the Titanic", "a boat", "a desert island", "Japan", "Hungary", "the US", "The Netherlands", "a church"]
-const time2 = ["suddently", "on Monday", "on Wednesday", "on Sunday", "tomorow", "next week", "in 42 minutes", "sometimes", "usualy" ]
+const time2 = ["suddently", "on Monday", "on Wednesday", "on Sunday", "tomorow", "next week", "in 42 minutes", "sometimes", "usualy", ""]
 
 
 // Level 3 (something really wierd)
 
-const characters3 = ["God", "a unicorn", "something unkown", "a salsa dancer", "a flying car", "a pangolin", "me"]
-const verbs3 = ["kiss", "invite to conquier the world", "stay", "remain"]
-const objects3 = []
-const adjectives3 = ["ironic", "unknown", "alive", "alone", "calm"]
+const characters3 = ["God", "unicorn", "unkown creature", "salsa dancer", "flying car", "pangolin", "me"]
+const verbs3 = ["kiss", "invite to conquier the world with", "stay", "remain", "cotton candy"]
+const objects3 = ["trousers", "ladybug", "socks", "toenail", "pumpkin", "illusion"]
+const adjectives3 = ["ironic", "unknown", "alive", "alone", "calm", "strange", "hypothetical", "magic"]
 const adverbs3 = ["ironically", "magically", "gently", "suddently"]
 const place3 = ["the world", "the universe", "Pluton", "Saturn", "a spatialship"]
-const time3 = ["suddently", "on Monday", "on Wednesday", "on Sunday", "tomorow", "next week", "in 42 minutes", "sometimes", "usualy", "in another life", "after the end of the world"]
+const time3 = ["Suddently", "On Monday", "On Wednesday", "On Sunday", "Tomorow", "Next week", "In 42 minutes", "Sometimes", "Usualy", "In another life", "After the end of the world"]
 /**
 * Picks a random element from an array
 * @param {Array} array
@@ -110,7 +110,7 @@ function validerForm(){
     document.getElementById("formulaire").submit();
 }
 
-function question_builder(){
+/*function question_builder(){
   
   switch(choice([1, 2]))
   {
@@ -133,6 +133,7 @@ function answer_builder(){
       return "I would "+choice(verbs)+' '+choice(person_answers)+" and "+choice(verbs)+' '+choice(object_answers);
   }
 }
+*/
 
 //Questions builders (in function of the level chosen)
 
@@ -141,7 +142,7 @@ function question_level1() {
    switch(choice([1, 2]))
   {
     case 1:
-      return choice(time1)+" a "+choice(adjectives1)+" event happens: "+choice(characters1)+" "+choice(verbs1)+" "+choice(objects1)+" with "+choice(characters1)+".";
+      return choice(time1)+" a "+choice(adjectives1)+" event happens: "+choice(characters1)+" "+choice(verbs1)+" "+choice(objects1)+" "+choice(characters1)+".";
 
     case 2:
       return "What would you do if "+choice(characters1)+' '+choice(verbs1)+' '+choice(characters1)+'?';
@@ -153,10 +154,10 @@ function question_level2() {
    switch(choice([1, 2]))
   {
     case 1:
-      return choice(time1)+" a "+choice(adjectives1)+" event happens: "+choice(characters1)+" "+choice(verbs1)+" "+choice(objects1)+" with "+choice(characters1)+".";
+      return choice(time1)+" a "+choice(adjectives1)+" event happens: "+choice(belonging)+choice(characters1)+" "+choice(verbs1)+" "+choice(belonging)+choice(objects1)+" "+choice(belonging)+choice(characters1)+".";
 
     case 2:
-      return "What would you do if "+choice(characters1)+' '+choice(verbs2)+' '+choice(characters2)+'?';
+      return "What would you do if "+choice(belonging)+choice(characters1)+' '+choice(verbs2)+' '+choice(belonging)+choice(characters2)+'?';
   }
 }
 
@@ -165,10 +166,10 @@ function question_level3() {
    switch(choice([1, 2]))
   {
     case 1:
-      return choice(time1)+" a "+choice(adjectives1)+" event happens: "+choice(characters1)+" "+choice(verbs1)+" "+choice(objects1)+" with "+choice(characters1)+".";
+      return choice(time1)+" a "+choice(adjectives1)+" event happens: "+choice(belonging)+choice(characters1)+" "+choice(verbs1)+" "+choice(belonging)+choice(objects1)+" "+choice(belonging)+choice(characters1)+".";
 
     case 2:
-      return "What would you do if "+choice(characters3)+' '+choice(verbs3)+' '+choice(characters3)+'?';
+      return "What would you do if "+choice(belonging)+choice(characters3)+' '+choice(verbs3)+' '+choice(belonging)+choice(characters3)+'?';
   }
 }
 
@@ -176,13 +177,16 @@ function question_level3() {
 // Answer builder (in function of the level)
 
 function answer_level1() {
-  switch(choice([1, 2]))
+  switch(choice([1, 2, 3]))
   {
     case 1:
-      return "I would "+choice(adverbs1)+' '+choice(verbs1)+' with '+choice(characters1);
+      return "I would "+choice(adverbs1)+' '+choice(verbs1)+' '+choice(belonging)+choice(characters1);
 
     case 2:
-      return "I would "+choice(verbs1)+' '+choice(characters1)+" and "+choice(verbs1)+' '+choice(objects1);
+      return "I would "+choice(verbs1)+' '+choice(belonging)+choice(characters1)+" and "+choice(belonging)+choice(verbs1)+' '+choice(belonging)+choice(objects1);
+  
+    case 3:
+      return "Oh, I "+choice(["am sorry", "apologize"])+", this question is too "+choice(adjectives1)+" for me. I can't "+choice(["choose", "select", "elect", "prefer"])+" one.";
   }
 }
 
@@ -190,10 +194,10 @@ function answer_level2() {
   switch(choice([1, 2]))
   {
     case 1:
-      return "I would "+choice(adverbs2)+' '+choice(verbs2)+' with '+choice(characters2);
+      return "I would "+choice(adverbs2)+' '+choice(verbs2)+' with '+choice(belonging)+choice(characters2);
 
     case 2:
-      return "I would "+choice(verbs2)+' '+choice(characters2)+" and "+choice(verbs2)+' '+choice(objects2);
+      return "I would "+choice(verbs2)+' '+choice(belonging)+choice(characters2)+" and "+choice(verbs2)+' '+choice(belonging)+choice(objects2);
   }
 }
 
@@ -201,10 +205,10 @@ function answer_level3() {
   switch(choice([1, 2]))
   {
     case 1:
-      return "I would "+choice(adverbs3)+' '+choice(verbs3)+' with '+choice(characters3);
+      return "I would "+choice(adverbs3)+' '+choice(verbs3)+' with '+choice(belonging)+choice(characters3);
 
     case 2:
-      return "I would "+choice(verbs3)+' '+choice(characters3)+" and "+choice(verbs3)+' '+choice(objects3);
+      return "I would "+choice(verbs3)+' '+choice(belonging)+choice(characters3)+" and "+choice(verbs3)+' '+choice(belonging)+choice(objects3);
   }
 }
 

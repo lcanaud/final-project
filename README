@@ -3,3 +3,5 @@ The Dreamer Quizz
 To play the dreamer quizz
 $ node server.js   in Terminal
 and go to : http://localhost:8088 with your broswer.
+
+If you want to play again please redo all these steps.

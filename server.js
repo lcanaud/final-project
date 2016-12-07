@@ -43,36 +43,57 @@ const belonging = ["my ", "your ", "a ", "the ", "the ", "a ", "a "];
 //const adverbs = ["magically", 'gently'];
 
 
-//Level 1 (something relatively normal)
+//Answer Level 1 = passive (something relatively normal)
 
-const characters1 = ["primary school teacher", "Grand-ma", "cat", "dog", "squirrel ", "ghost", "secret love"]
-const verbs1 = ["eat", "go away with", "curtomize", "give back", "run into"]
-const objects1 = ["mathematic test", "vase", "bouquet of flowers", "laptop", "slice of pizza", "cloud", "rain", "hat"]
-const adjectives1 = ["brilliant", "catastrophic", "ridiculus", "forgotten", "strange", "small", "little", "big", "enormous"]
-const adverbs1 = ["gently", "lovely", "kindly", "suddently"]
-const place1 = ["a bathroom", "a classroom", "the Dam", "Centraal Station", "a windmill", "the world", "your bed"]
-const time1 = ["suddently", "on Monday", "on Wednesday", "on Sunday"]
+const characters1 = ["primary school teacher", "Grand-ma", "cat", "dog", "squirrel ", "ghost", "secret love"];
+const verbs1 = ["eat", "go away with", "curtomize", "give back", "run into"];
+const objects1 = ["mathematic test", "vase", "bouquet of flowers", "laptop", "slice of pizza", "cloud", "rain", "hat"];
+const adjectives1 = ["brilliant", "catastrophic", "ridiculus", "forgotten", "strange", "small", "little", "big", "enormous"];
+const adverbs1 = ["gently", "lovely", "kindly", "suddently"];
+const place1 = ["a bathroom", "a classroom", "the Dam", "Centraal Station", "a windmill", "the world", "your bed"];
+const time1 = ["suddently", "on Monday", "on Wednesday", "on Sunday"];
 
-//Level 2 (something a bit creative)
+//Answer Level 2 = cretive (something a bit creative)
 
-const characters2 = ["pig", "Grand-pa", "Prime Minister", "crocodile", "gentleman", "lawyer", "me"]
-const verbs2 = ["ride", "be proud of", "congratulates", "get married with", "forget"]
-const objects2 = ["apple pie", "film", "movie", "Youtube video", "illusion"]
-const adjectives2 = ["unexpected", "brilliant", "catastrophic", "weak", "kind", "cute"]
-const adverbs2 = ["unbelievably", "suddently"]
-const place2 = ["the world", "the Titanic", "a boat", "a desert island", "Japan", "Hungary", "the US", "The Netherlands", "a church"]
-const time2 = ["suddently", "on Monday", "on Wednesday", "on Sunday", "tomorow", "next week", "in 42 minutes", "sometimes", "usualy", ""]
+const characters2 = ["a pig", "Grand-pa", "Prime Minister", "crocodile", "gentleman", "lawyer", "me"];
+const verbs2 = ["ride", "be proud of", "congratulates", "get married with", "forget"];
+const objects2 = ["apple pie", "film", "movie", "Youtube video", "illusion"];
+const adjectives2 = ["unexpected", "brilliant", "catastrophic", "weak", "kind", "cute"];
+const adverbs2 = ["unbelievably", "suddently"];
+const place2 = ["the world", "the Titanic", "a boat", "a desert island", "Japan", "Hungary", "the US", "The Netherlands", "a church"];
+const time2 = ["suddently", "on Monday", "on Wednesday", "on Sunday", "tomorow", "next week", "in 42 minutes", "sometimes", "usualy", ""];
 
 
-// Level 3 (something really wierd)
+// Answeer Level 3 = wierd  (something really wierd)
 
-const characters3 = ["God", "unicorn", "unkown creature", "salsa dancer", "flying car", "pangolin", "me"]
-const verbs3 = ["kiss", "invite to conquier the world with", "stay", "remain", "cotton candy"]
-const objects3 = ["trousers", "ladybug", "socks", "toenail", "pumpkin", "illusion"]
-const adjectives3 = ["ironic", "unknown", "alive", "alone", "calm", "strange", "hypothetical", "magic"]
-const adverbs3 = ["ironically", "magically", "gently", "suddently"]
-const place3 = ["the world", "the universe", "Pluton", "Saturn", "a spatialship"]
-const time3 = ["Suddently", "On Monday", "On Wednesday", "On Sunday", "Tomorow", "Next week", "In 42 minutes", "Sometimes", "Usualy", "In another life", "After the end of the world"]
+const characters3 = ["God", "unicorn", "unkown creature", "salsa dancer", "flying car", "pangolin", "me"];
+const verbs3 = ["kiss", "invite to conquier the world with", "stay", "remain", "cotton candy"];
+const objects3 = ["trousers", "ladybug", "socks", "toenail", "pumpkin", "illusion"];
+const adjectives3 = ["ironic", "unknown", "alive", "alone", "calm", "strange", "hypothetical", "magic"];
+const adverbs3 = ["ironically", "magically", "gently", "suddently"];
+const place3 = ["the world", "the universe", "Pluton", "Saturn", "a spatialship"];
+const time3 = ["Suddently", "On Monday", "On Wednesday", "On Sunday", "Tomorow", "Next week", "In 42 minutes", "Sometimes", "Usualy", "In another life", "After the end of the world"];
+
+// Results 1 Passive :
+
+const adjectives_r_1 = [];
+const verbs_r_1 = [];
+const characters_r_1 = [];
+const adverbs_r_1 = [];
+
+// Results 2 Creative :
+const adjectives_r_2 = [];
+const verbs_r_2 = [];
+const characters_r_2 = [];
+const adverbs_r_2 = [];
+
+// Results 3 Creative :
+const adjectives_r_3 = [];
+const verbs_r_3 = [];
+const characters_r_3 = [];
+const adverbs_r_3 = [];
+
+
 /**
 * Picks a random element from an array
 * @param {Array} array
@@ -216,20 +237,32 @@ function answer_level3() {
 function make_choice1(previous_question) {
 
 
-  return {"question": question_level1(), "response_1": answer_level1(), "response_2": answer_level2(), "response_3": answer_level3()};
+  return {"question": question_level1(), "response_1": answer_level1(), "response_2": answer_level2(), "response_3": answer_level3(), "results": ""};
 
 }
 
 function make_choice2(previous_question) {
 
 
-  return {"question": question_level2(), "response_1": answer_level1(), "response_2": answer_level2(), "response_3": answer_level3()};
+  return {"question": question_level2(), "response_1": answer_level1(), "response_2": answer_level2(), "response_3": answer_level3(), "results": ""};
 
 }
 
 function make_choice3(previous_question) {
 
-  return {"question": question_level3(), "response_1": answer_level1(), "response_2": answer_level2(), "response_3": answer_level3()};
+  return {"question": question_level3(), "response_1": answer_level1(), "response_2": answer_level2(), "response_3": answer_level3(), "results": ""};
+}
+
+function results_1(previous_question) {
+  return {"question": "You can read the results below", "response_1": "", "response_2": "", "response_3": "", "results": "ceci est un test 1"};
+}
+
+function results_2(previous_question) {
+  return {"question": "You can read the results below", "response_1": "", "response_2": "", "response_3": "", "results": "ceci est un test 2"};
+}
+
+function results_3(previous_question) {
+  return {"question": "You can read the results below", "response_1": "", "response_2": "", "response_3": "",  "results": "ceci est un test 3"};
 }
 
 /* ----------------------------------
@@ -248,7 +281,7 @@ io.on('connection', function(socket) {
   console.log('Somebody is here! ');
  
   
-  io.emit('message from robot', {"question": "Which kind of dream do you prefer?", "response_1": "Something relatively normal", "response_2": "Something a bit creative", "response_3": "Something really weird!"}); // greetings
+  io.emit('message from robot', {"question": "Which kind of dream do you prefer?", "response_1": "Something relatively normal", "response_2": "Something a bit creative", "response_3": "Something really weird!", "results": ""}); // greetings
   
 
   // (2) configure the connected socket to receive custom messages ('message from human')
@@ -262,6 +295,8 @@ io.on('connection', function(socket) {
       console.log("choice1");
 
       io.emit('message from robot', make_choice1(msg.question));
+
+      count_1++;
     }
 
     if(msg.choice2) {
@@ -269,6 +304,8 @@ io.on('connection', function(socket) {
       console.log("choice2");
 
       io.emit('message from robot', make_choice2(msg.question));
+
+      count_2++;
     }
 
     if(msg.choice3) {
@@ -276,7 +313,33 @@ io.on('connection', function(socket) {
       console.log("choice3");
 
       io.emit('message from robot', make_choice3(msg.question));
+
+      count_3++;
     }
+
+
+
+    if (count_1 + count_2 + count_3 == 4) {
+
+      if (count_1 >= count_2 && count_1 > count_3) {
+
+        io.emit('message from robot', results_1());
+
+      }
+      
+      if (count_2 > count_1 && count_2 >= count_3) {
+
+        io.emit('message from robot', results_2());
+      }
+
+      if (count_3 >= count_1 && count_3>count_2) {
+
+        io.emit('message from robot', results_3());
+      }
+
+    }
+
+
 
 
   });

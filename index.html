@@ -57,7 +57,7 @@
 				text-align: center;
 			}
 
-			.test_question {
+			.test_question, #results_title {
 				text-align: center;
 				font-family: Arial;
 				font-size: 20px;
@@ -84,6 +84,16 @@
 				margin-bottom: 20px;
 			}
 
+			#results {
+				font-family: Verdana;
+				margin-left: 30px;
+				text-align: center;
+				padding: 3px
+				margin-bottom: 20px;
+				margin-top: 20px;
+			}
+
+
 			h3 {
 				background-color: #418e98;
 				color: #418e98;
@@ -98,7 +108,7 @@
 		<!-- HTML -->
 		<h3>...</h3>
 		<h1>The Dreamer Quizz</h1>
-		<p>Have you ever heard of lucid dreams? What would you do whether you had the opportunity to control your dreams ?</p>
+		<p>Have you ever heard of lucid dreams? What would you do if you had the opportunity to control your dreams ?</p>
 		<p> Select your level of difficulty and discover what kind of dreamer you are.</p>
 		<br>
 		<img scr="http://ekladata.com/E_YDtouTOtjPVEuaO8jRHdenEjc/image-defaut-random-quizz.jpg">
@@ -135,6 +145,13 @@
 			
 		</div>	
 		
+		<h3>...</h3>
+		<div id= results_title> Results </div>
+		
+		<div id='results'>.</div>
+
+
+
 
 		<!-- SCRIPTS -->
 		<!-- import socket.io -->
@@ -157,6 +174,7 @@
 		  	document.getElementById("response_1_label").innerHTML = msg.response_1;
 		  	document.getElementById("response_2_label").innerHTML = msg.response_2;
 		  	document.getElementById("response_3_label").innerHTML = msg.response_3;
+		  	document.getElementById('results').innerHTML = msg.results;
 
 
 		  });
@@ -168,8 +186,9 @@
 		  	var r2 = document.getElementById("radio2").checked;
 		  	var r3 = document.getElementById("radio3").checked;
 		  	var q =  document.getElementById("question_label").innerHTML;
+		  	var r = document.getElementById('results').value;
 
-		  	var message = { question: q, choice1: r1, choice2: r2, choice3: r3};
+		  	var message = { question: q, choice1: r1, choice2: r2, choice3: r3, results: r};
 
 		  	socket.emit('message from human', message);
 

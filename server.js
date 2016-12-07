@@ -31,46 +31,46 @@ var count_3 = 0;
 //Questions (general)
 
 const wh_words = ["What", "Why", "How", "Where"];
-const will_verbs = ["want", "prefer", "try to", "chose", "propose", "would like", "would enjoy"];
+const will_verbs = ["want", "prefer to", "try to", "chose", "propose", "would like", "would enjoy"];
 
 
 // Question specific arrays
 
 const q_verbs1 = ["ate", "got away with", "curtomized", "gave back to", "ran into", "talked with", "walked with"];
 const q_verbs2 = ["rode", "was proud of", "congratulated", "got married with", "forgot"];
-const q_verbs3 = ["kissed", "invited to conquer the world", "stayed", "remained"];
+const q_verbs3 = ["kissed", "invited you to conquer the world", "stayed", "remained"];
 
 
 //Answer Level 1 = passive (something relatively normal)
 
 const characters1 = ["your primary school teacher", "your Grand-ma", "a cat", "a dog", "a squirrel ", "a ghost", "your secret love", "your boss", "my friend"];
-const verbs1 = ["eat", "get away with", "customize", "give back to", "run into", "talk with", "walk with"];
+const verbs1 = ["eat", "get away with", "customize", "give back to", "run into", "talk with", "walk with", "relax", "sit", "bake"];
 const objects1 = ["a mathematic test", "your mum's vase", "bouquet of flowers", "laptop", "slice of pizza", "cloud", "rain", "hat"];
 const adjectives1 = ["brilliant", "catastrophic", "ridiculous", "forgotten", "clam", "small", "big", "enormous", "delicate", "ideal", "cold"];
-const adverbs1 = ["gently", "lovely", "kindly", "suddently"];
+const adverbs1 = ["gently", "lovely", "kindly", "suddenly", "quickly", "gladly", "lazily", "rudely", "stupidly"];
 const place1 = ["in a bathroom", "in a classroom", "on the Dam", "at Centraal Station", "near a windmill", "in the world", "in your bed"];
-const time1 = ["Suddenly", "On Monday", "On Sunday", "On week days", "During school", "At word"];
+const time1 = ["suddenly", "on Monday", "on Sunday", "on week days", "during school", "at word"];
 
 //Answer Level 2 = cretive (something a bit creative)
 
 const characters2 = ["a pig", "your Grand-pa", "the Prime Minister", "a crocodile", "a gentleman", "a lawyer", "me", "your lover"];
-const verbs2 = ["ride", "be proud of", "congratulates", "get married with", "forget"];
-const objects2 = ["an apple pie", "the film", "the movie", "some Youtube video", "an illusion"];
+const verbs2 = ["ride", "be proud of", "congratulates", "get married with", "forget", "smell", "taste", "take care of", "explore"];
+const objects2 = ["an apple pie", "the film", "the movie", "some Youtube video", "an illusion", "a globe", "a glove", "a map"];
 const adjectives2 = ["unexpected", "brilliant", "catastrophic", "weak", "kind", "cute", "charming", "admirable", "lovely"];
-const adverbs2 = ["unbelievably", "suddently"];
-const place2 = ["in the world", "on the Titanic", "on a boat", "on a deserted island", "in Japan", "in Hungary", "in the US", "in The Netherlands", "in a church"];
-const time2 = ["Suddenly", "On Monday", "Tomorow", "Next week", "In 42 minutes", "Sometimes", "Usualy", ""];
+const adverbs2 = ["unbelievably", "suddenly", "greatly", "unbelievably", "incredibly", "mightly", "famously", "cheerfully", "elegantly"];
+const place2 = ["in the world", "on the Titanic", "on a boat", "on a deserted island", "in Japan", "in Hungary", "in the US", "in The Netherlands", "in a church", "on the Internet"];
+const time2 = ["suddenly", "on Monday", "tomorrow", "next week", "in 42 minutes", "sometimes", "usualy", ""];
 
 
 // Answeer Level 3 = wierd  (something really wierd)
 
-const characters3 = ["God", "a unicorn", "an unkown creature", "a salsa dancer", "a flying car", "a pangolin", "me", "a pinguin"];
-const verbs3 = ["kiss", "invite to conquer the world", "stay", "remain"];
-const objects3 = ["trousers", "a ladybug", "socks", "a toenail", "a pumpkin", "an illusion", "clumble of bread", "a cotton candy", "a witch"];
+const characters3 = ["God", "a unicorn", "an unkown creature", "a salsa dancer", "a flying car", "a pangolin", "me", "a pinguin", "the Internet"];
+const verbs3 = ["kiss", "invite to conquer the world", "stay", "remain", "dance", "devour", "do backflips", "prance", "praize", "swim"];
+const objects3 = ["trousers", "a ladybug", "socks", "a toenail", "a pumpkin", "an illusion", "clumble of bread", "cotton candy", "a witch"];
 const adjectives3 = ["ironic", "unknown", "alive", "alone", "strange", "hypothetical", "magic", "adorable", "angelic"];
-const adverbs3 = ["ironically", "magically", "gently", "suddently"];
+const adverbs3 = ["ironically", "magically", "gently", "suddenly", "violently", "tenderly", "silently", "painfully"];
 const place3 = ["in the world", "in the universe", "on Pluto", "on Saturn", "in a spaceship", "in the Milky Way"];
-const time3 = ["Suddenly", "On Sunday", "Tomorow", "Next week", "In 42 minutes", "Sometimes", "Usualy", "In another life", "After the end of the world"];
+const time3 = ["suddenly", "on Sunday", "tomorrow", "next week", "in 42 minutes", "sometimes", "usualy", "in another life", "after the end of the world"];
 
 // Results 1 Passive :
 
@@ -81,7 +81,7 @@ const characters_r_1 = ["Grand-ma", "Grand-pa", "pets", "dogs", "cats", "flowers
 // Results 2 Creative :
 const adjectives_r_2 = ["gifted", "ingenious", "innovative", "original", "clever", "inspired"];
 const verbs_r_2 = ["draw", "paint", "observe", "study", "look at", "smell", "taste", "experiment on"];
-const characters_r_2 = ["colours", "art", "sculpture", "painting", "museum", "music", "stars", "planets", "plants", "nature", "nature"];
+const characters_r_2 = ["colours", "art", "sculpture", "paint", "museum", "music", "stars", "planets", "plants", "nature", "atmosphere"];
 
 // Results 3 Wierd :
 const adjectives_r_3 = ["weird", "strange", "extraordinary", "mysterious", "mysterious", "eccentric", "freaky", "odd", "peculiar"];
@@ -150,7 +150,7 @@ function question_level1() {
       return choice(characters1)+" seems to be in "+choice(adjectives1)+" trouble "+choice(place1)+". What would you do?";
 
     case 4:
-      return  choice(objects1)+" are on sale. "+choice(wh_words)+" do you "+choice(verbs1);
+      return  choice(objects1)+" is on sale. "+choice(wh_words)+" do you "+choice(verbs1);
 
     case 5: 
       return choice(characters1)+" likes to "+choice(verbs1)+" "+choice(adverbs1)+". Do you join in?"; 
@@ -172,7 +172,7 @@ function question_level2() {
       return choice(characters2)+" seems to be in "+choice(adjectives2)+" trouble "+choice(place2)+ ". What would you do?";
 
     case 4:
-      return  choice(objects2)+" are on sale. "+choice(wh_words)+" do you "+choice(verbs2);
+      return  choice(objects2)+" is on sale. "+choice(wh_words)+" do you "+choice(verbs2);
 
     case 5: 
       return choice(characters2)+" likes to "+choice(verbs2)+" "+choice(adverbs2)+". Do you join in?";   
@@ -194,7 +194,7 @@ function question_level3() {
       return choice(characters3)+" seems to be in "+choice(adjectives3)+" trouble "+choice(place3)+". What would you do?";
 
     case 4:
-      return  choice(objects3)+" are on sale. "+choice(wh_words)+" do you "+choice(verbs3);
+      return  choice(objects3)+" is on sale. "+choice(wh_words)+" do you "+choice(verbs3);
 
     case 5: 
       return choice(characters3)+" likes to "+choice(verbs3)+" "+choice(adverbs3)+". Do you join in?";   
@@ -206,7 +206,7 @@ function question_level3() {
 // Answer builder (in function of the level)
 
 function answer_level1() {
-  switch(choice([1, 2, 3, 4, 5, 6]))
+  switch(choice([1, 2, 3, 4, 5, 6, 7]))
   {
     case 1:
       return "I would "+choice(adverbs1)+' '+choice(verbs1)+' '+choice(characters1);
@@ -223,13 +223,17 @@ function answer_level1() {
     case 5:
       return  "I don't like to "+choice(verbs1)+" "+choice(adverbs1)+". I shouldn't get involved "+choice(time1)+".";
 
-     case 6: 
+    case 6: 
       return "That sounds "+choice(adjectives1)+". I agree.";
+
+    case 7:
+      return "The logical course of action, is to "+choice(adverbs1)+" "+choice(verbs1)+" "+choice(place1)+".";
+
   }
 }
 
 function answer_level2() {
-  switch(choice([1, 2, 3, 4, 5]))
+  switch(choice([1, 2, 3, 4, 5, 6]))
   {
     case 1:
       return "I would "+choice(adverbs2)+' '+choice(verbs2)+' with '+choice(characters2);
@@ -245,11 +249,14 @@ function answer_level2() {
 
     case 5:
       return "I think whatever "+choice(characters2)+" is doing, is "+choice(adjectives2)+".";
+
+    case 6:
+      return "My opinion is that "+choice(objects2)+" is "+choice(adjectives2)+", so I won't act "+choice(adverbs2)+".";  
   }
 }
 
 function answer_level3() {
-  switch(choice([1, 2, 3, 4, 5]))
+  switch(choice([1, 2, 3, 4, 5, 6]))
   {
     case 1:
       return "I would "+choice(adverbs3)+' '+choice(verbs3)+' with '+choice(characters3);
@@ -261,11 +268,13 @@ function answer_level3() {
       return choice(characters3)+" has a lot of "+choice(adjectives3)+" "+choice(objects3)+". So I'll "+choice(adverbs3)+" "+choice(verbs3)+" with "+choice(characters3)+".";
 
     case 4:
-      return  choice(adjectives3)+" "+choice(objects3)+" are "+choice(adjectives3)+" "+choice(place3)+". I don't like "+choice(characters3)+", so that's "+choice(adjectives3)+".";
+      return choice(objects3)+" is "+choice(adjectives3)+" "+choice(place3)+". I don't like "+choice(characters3)+", so that's "+choice(adjectives3)+".";
 
     case 5:
       return "I "+choice(verbs3)+" a lot "+choice(time3)+" with "+choice(objects3)+". So yeah, you could say I "+choice(verbs3)+" "+choice(adjectives3)+".";  
 
+    case 6:
+      return choice(characters3)+" likes the way I "+choice(verbs3)+" "+choice(adverbs3)+" "+choice(time3)+", which is "+choice(adjectives3)+". It makes me feel "+choice(adjectives3)+"!";
 
   }
 }
@@ -377,7 +386,7 @@ io.on('connection', function(socket) {
 
 
 
-    if (count_1 + count_2 + count_3 == 4) {
+    if (count_1 + count_2 + count_3 == 10) {
 
       if (count_1 >= count_2 && count_1 > count_3) {
 

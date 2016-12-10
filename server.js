@@ -1,15 +1,20 @@
 /*
   file:   server.js
-  desc:   script that configures a HTTP server that listens to incoming client connections.
-          Clients are expected to send chat-like messages (see index.html) which are replied 
-          to depending if certain patterns are recognised in the message (or not). The idea
-          is to create a simple artificial conversation between the a human subject and the 
-          script. The work is inspired by Alan Turing's Imitation Game and Joseph Weizenbaum's
-          ELIZA. 
-  author: Lena Canaud (Based on David Gauthier's work)
-  date:   21/11/16
+  desc:   Final project for CTH-2016. This server randomly generates questions and answer to the dreamer quizz (see Readme and html file).
+    PART I : variables and constants. Please install via nps the required commands. 
+    PART II :
+       A : initialization of the quizz randomness
+       B : Question and answer builders
+    PART III : insersion of the answers and questions builders in the sent message to the client (the html file)
+    PART IV : Server configuration
+
+  authors: Lena Canaud & Cassandra Everyle
+  date:   december 2016
 */
 
+
+
+/* --------- PART I ----------*/
 // import express ()
 var express = require('express');		// npm install --save express
 var app = express();
@@ -23,15 +28,17 @@ var io = require('socket.io')(server);	// npm install --save socket.io
 // import chance (http://chancejs.com)
 var chance = require('chance').Chance(); // npm install --save chance
 
-
+// Counters for each responses. Incremented later in the script.
 var count_1 = 0;
 var count_2 = 0;
 var count_3 = 0;
 
+// ----- ARRAYS for the randomly generated text----- :
+
 //Questions (general)
 
 const wh_words = ["What", "Why", "How", "Where"];
-const will_verbs = ["want", "prefer to", "try to", "chose", "propose", "would like", "would enjoy"];
+const will_verbs = ["want", "prefer", "try to", "chose", "propose", "would like", "would enjoy"];
 
 
 // Question specific arrays
@@ -41,17 +48,17 @@ const q_verbs2 = ["rode", "was proud of", "congratulated", "got married with", "
 const q_verbs3 = ["kissed", "invited you to conquer the world", "stayed", "remained"];
 
 
-//Answer Level 1 = passive (something relatively normal)
+//Answer Level 1 = passive profile (if the user selected the radio button n°1 during the previous question).
 
 const characters1 = ["your primary school teacher", "your Grand-ma", "a cat", "a dog", "a squirrel ", "a ghost", "your secret love", "your boss", "my friend"];
 const verbs1 = ["eat", "get away with", "customize", "give back to", "run into", "talk with", "walk with", "relax", "sit", "bake"];
-const objects1 = ["a mathematic test", "your mum's vase", "bouquet of flowers", "laptop", "slice of pizza", "cloud", "rain", "hat"];
+const objects1 = ["a mathematic test", "your mum's vase", "a bouquet of flowers", "laptop", "slice of pizza", "cloud", "rain", "hat"];
 const adjectives1 = ["brilliant", "catastrophic", "ridiculous", "forgotten", "clam", "small", "big", "enormous", "delicate", "ideal", "cold"];
 const adverbs1 = ["gently", "lovely", "kindly", "suddenly", "quickly", "gladly", "lazily", "rudely", "stupidly"];
 const place1 = ["in a bathroom", "in a classroom", "on the Dam", "at Centraal Station", "near a windmill", "in the world", "in your bed"];
 const time1 = ["suddenly", "on Monday", "on Sunday", "on week days", "during school", "at word"];
 
-//Answer Level 2 = cretive (something a bit creative)
+//Answer Level 2 = cretive profile (if the user selected the radio button n°2 during the previous question).
 
 const characters2 = ["a pig", "your Grand-pa", "the Prime Minister", "a crocodile", "a gentleman", "a lawyer", "me", "your lover"];
 const verbs2 = ["ride", "be proud of", "congratulates", "get married with", "forget", "smell", "taste", "take care of", "explore"];
@@ -62,7 +69,7 @@ const place2 = ["in the world", "on the Titanic", "on a boat", "on a deserted is
 const time2 = ["suddenly", "on Monday", "tomorrow", "next week", "in 42 minutes", "sometimes", "usualy", ""];
 
 
-// Answeer Level 3 = wierd  (something really wierd)
+// Answeer Level 3 = wierd profile (if the user selected the radio button n°3 during the previous question).
 
 const characters3 = ["God", "a unicorn", "an unkown creature", "a salsa dancer", "a flying car", "a pangolin", "me", "a pinguin", "the Internet"];
 const verbs3 = ["kiss", "invite to conquer the world", "stay", "remain", "dance", "devour", "do backflips", "prance", "praize", "swim"];
@@ -71,6 +78,9 @@ const adjectives3 = ["ironic", "unknown", "alive", "alone", "strange", "hypothet
 const adverbs3 = ["ironically", "magically", "gently", "suddenly", "violently", "tenderly", "silently", "painfully"];
 const place3 = ["in the world", "in the universe", "on Pluto", "on Saturn", "in a spaceship", "in the Milky Way"];
 const time3 = ["suddenly", "on Sunday", "tomorrow", "next week", "in 42 minutes", "sometimes", "usualy", "in another life", "after the end of the world"];
+
+
+// RESULTS ARRAYS (used at the end of the quizz)
 
 // Results 1 Passive :
 
@@ -89,6 +99,9 @@ const verbs_r_3 = ["assault", "cook", "dance", "conquer the world", "have a phil
 const characters_r_3 = ["unicorns", "rainbows", "bicycles", "giraffes", "garbage", "bird", "ladybugs", "toenails", "pumpkins"];
 
 
+/* ------ PART II --------*/
+
+// II.A : initialization of the quizz randomness
 
 /**
 * Picks a random element from an array
@@ -103,6 +116,8 @@ function choice(array) {
 
   return array[index];
 }
+
+
 
 /**
 * Randomly picks or not a random element from an array
@@ -133,6 +148,9 @@ function capitalizeFirstLetters(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+
+//II.B : Question and answer builders
+// Use of differend structure of eatch type of answers.
 
 //Questions builders (in function of the level chosen)
 
@@ -227,7 +245,7 @@ function answer_level1() {
       return "That sounds "+choice(adjectives1)+". I agree.";
 
     case 7:
-      return "The logical course of action, is to "+choice(adverbs1)+" "+choice(verbs1)+" "+choice(place1)+".";
+      return "The logical course of action, is to "+choice(adverbs1)+" "+choice(verbs1)+" "+choice(objects1)+" "+choice(place1)+".";
 
   }
 }
@@ -300,6 +318,8 @@ function results_wierd() {
 }
 
 
+/*------ PART III-----*/
+
 
 function make_choice1(previous_question) {
 
@@ -332,9 +352,9 @@ function results_3(previous_question) {
   return {"question": "You can read the results below", "response_1": "", "response_2": "", "response_3": "",  "results": results_wierd()};
 }
 
-/* ----------------------------------
-	Server and Socket Configuration
---------------------------------------*/
+/* -----------------------------------------
+	PART IV : Server and Socket Configuration
+--------------------------------------------*/
 
 // tell express to server our index.html file
 app.get('/', function (req, res) {
@@ -357,13 +377,13 @@ io.on('connection', function(socket) {
 
     console.log('You have a new message: ' + JSON.stringify(msg));
 
-    if(msg.choice1) {
+    if(msg.choice1) { // If the radio button 1 is selected
 
-      console.log("choice1");
+      console.log("choice1"); // display the message in the terminal
 
-      io.emit('message from robot', make_choice1(msg.question));
+      io.emit('message from robot', make_choice1(msg.question)); //send the message to the client
 
-      count_1++;
+      count_1++; // the counter is incremented
     }
 
     if(msg.choice2) {
@@ -384,7 +404,7 @@ io.on('connection', function(socket) {
       count_3++;
     }
 
-
+    // Counters. 10 corresponds to the number of displayed questions.
 
     if (count_1 + count_2 + count_3 == 10) {
 
@@ -411,14 +431,6 @@ io.on('connection', function(socket) {
 
   });
 
-  /*socket.on ('somebody answered', function(ans) {
-
-    var reponse = question_builder(ans);
-
-     io.emit('new question', reponse);
-
-  });
-  */
 
   socket.on('disconnet', function() {
 

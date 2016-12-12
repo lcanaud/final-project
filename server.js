@@ -8,7 +8,7 @@
     PART III : insersion of the answers and questions builders in the sent message to the client (the html file)
     PART IV : Server configuration
 
-  authors: Lena Canaud & Cassandra Everyle
+  authors: Lena Canaud & Cassandra Sijtsma
   date:   december 2016
 */
 

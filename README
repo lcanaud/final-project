@@ -1,5 +1,7 @@
 The Dreamer Quizz
 
+Léna Canaud and Cassandra Sijtsma
+
 To play the dreamer quizz
 $ node server.js   in Terminal
 and go to : http://localhost:8088 with your broswer.

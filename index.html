@@ -93,6 +93,9 @@
 				margin-top: 20px;
 			}
 
+			#image_results {
+				text-align: center;
+			}
 
 			h3 {
 				background-color: #418e98;
@@ -107,11 +110,12 @@
 	<body>		
 		<!-- HTML -->
 		<h3>...</h3>
+		<center><img src="http://ekladata.com/R4F1Gdqxy4nD0pbBWRCKyUWpSGk.png" alt="image-default" style="width: 1000px;" ></center>
 		<h1>The Dreamer Quizz</h1>
 		<p>Have you ever heard of lucid dreams? What would you do if you had the opportunity to control your dreams ?</p>
 		<p> Select your level of difficulty and discover what kind of dreamer you are.</p>
 		<br>
-		<center><img src="http://cucsa.org.uk/wp-content/uploads/2015/10/Work_In_Progress.png" alt="image-default" style="width: 200px;" ></center>
+		<center><img src="http://ekladata.com/2ZWGA9TlhAFRuDc-ZdWhTZLfmRI.png" alt="image-default" style="width: 1000px;" ></center>
 
 		<div class="test_question">
 			<label id="question_label">I want a question here !</label> 
@@ -148,15 +152,16 @@
 		<h3>...</h3>
 		<div id= results_title> Results </div>
 		
+		<center><div id='image-results'>
+		</div></center>
 		<div id='results'>.</div>
-
-
 
 
 		<!-- SCRIPTS -->
 		<!-- import socket.io -->
 		<script src="/socket.io/socket.io.js"></script>
 		<script>
+
 			// connect to localhost on its port (see server.js -- 8088)
 		  var socket = io().connect('http://localhost:8088');
 		  // when connecting 
@@ -176,6 +181,17 @@
 		  	document.getElementById("response_3_label").innerHTML = msg.response_3;
 		  	document.getElementById('results').innerHTML = msg.results;
 
+		  	console.log("-------" + msg.img);
+
+		  	if(msg.img !== "none") {
+
+		  		console.log(msg.img);
+
+		  		var img_profile = new Image(); // width, height values are optional params 
+		  		img_profile.src = msg.img;
+		  		document.getElementById('image-results').appendChild(img_profile);
+		  	}
+
 
 		  });
 
@@ -187,8 +203,9 @@
 		  	var r3 = document.getElementById("radio3").checked;
 		  	var q =  document.getElementById("question_label").innerHTML;
 		  	var r = document.getElementById('results').value;
+		  	var img = document.getElementById('image-results').value;
 
-		  	var message = { question: q, choice1: r1, choice2: r2, choice3: r3, results: r};
+		  	var message = { question: q, choice1: r1, choice2: r2, choice3: r3, results: r, image: img};
 
 		  	socket.emit('message from human', message);
 

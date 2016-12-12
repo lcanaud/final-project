@@ -266,7 +266,7 @@ function answer_level2() {
     return choice(characters2)+" is my "+choice(adjectives2)+" inspiration. I "+choice(will_verbs)+" "+choice(verbs2)+" "+choice(place2)+".";
 
     case 5:
-      return "I think whatever "+choice(characters2)+" is doing, is "+choice(adjectives2)+".";
+      return "I think whatever "+choice(characters2)+" is doing, it is "+choice(adjectives2)+".";
 
     case 6:
       return "My opinion is that "+choice(objects2)+" is "+choice(adjectives2)+", so I won't act "+choice(adverbs2)+".";  
@@ -317,6 +317,17 @@ function results_wierd() {
 
 }
 
+function img_r1() {
+  return "http://i.imgur.com/0Jghbij.png";
+}
+
+function img_r2() {
+  return "http://i.imgur.com/AUsHIS0.png";
+}
+
+function img_r3() {
+  return "http://i.imgur.com/wXJt8uY.png";
+}
 
 /*------ PART III-----*/
 
@@ -324,32 +335,32 @@ function results_wierd() {
 function make_choice1(previous_question) {
 
 
-  return {"question": question_level1(), "response_1": answer_level1(), "response_2": answer_level2(), "response_3": answer_level3(), "results": ""};
+  return {"question": question_level1(), "response_1": answer_level1(), "response_2": answer_level2(), "response_3": answer_level3(), "results": "", "img": "none"};
 
 }
 
 function make_choice2(previous_question) {
 
 
-  return {"question": question_level2(), "response_1": answer_level1(), "response_2": answer_level2(), "response_3": answer_level3(), "results": ""};
+  return {"question": question_level2(), "response_1": answer_level1(), "response_2": answer_level2(), "response_3": answer_level3(), "results": "", "img": "none"};
 
 }
 
 function make_choice3(previous_question) {
 
-  return {"question": question_level3(), "response_1": answer_level1(), "response_2": answer_level2(), "response_3": answer_level3(), "results": ""};
+  return {"question": question_level3(), "response_1": answer_level1(), "response_2": answer_level2(), "response_3": answer_level3(), "results": "", "img": "none"};
 }
 
 function results_1(previous_question) {
-  return {"question": "You can read the results below", "response_1": "", "response_2": "", "response_3": "", "results": results_passive()};
+  return {"question": "You can read the results below", "response_1": "", "response_2": "", "response_3": "", "results": results_passive(), "img": img_r1()};
 }
 
 function results_2(previous_question) {
-  return {"question": "You can read the results below", "response_1": "", "response_2": "", "response_3": "", "results": results_creative()};
+  return {"question": "You can read the results below", "response_1": "", "response_2": "", "response_3": "", "results": results_creative(), "img": img_r2()};
 }
 
 function results_3(previous_question) {
-  return {"question": "You can read the results below", "response_1": "", "response_2": "", "response_3": "",  "results": results_wierd()};
+  return {"question": "You can read the results below", "response_1": "", "response_2": "", "response_3": "",  "results": results_wierd(), "img": img_r3()};
 }
 
 /* -----------------------------------------
@@ -368,7 +379,7 @@ io.on('connection', function(socket) {
   console.log('Somebody is here! ');
  
   
-  io.emit('message from robot', {"question": "Which kind of dream do you prefer?", "response_1": "I "+choice(will_verbs)+" something "+choice(adjectives1), "response_2": "I "+choice(will_verbs)+" something "+choice(adjectives2), "response_3": "I "+choice(will_verbs)+" something "+choice(adjectives3), "results": ""}); // greetings
+  io.emit('message from robot', {"question": "Which kind of dream do you prefer?", "response_1": "I "+choice(will_verbs)+" something "+choice(adjectives1), "response_2": "I "+choice(will_verbs)+" something "+choice(adjectives2), "response_3": "I "+choice(will_verbs)+" something "+choice(adjectives3), "results": "", "img": ""}); // greetings
   
 
   // (2) configure the connected socket to receive custom messages ('message from human')

@@ -2,8 +2,17 @@ The Dreamer Quizz
 
 Léna Canaud and Cassandra Sijtsma
 
+Final project for CTH-2016. This server randomly generates questions and answer to the dreamer quizz. The quiz will have 10 questions, after which it will display a randomized result from one of three categories. The result is based on the answers given during the quiz.
+
 To play the dreamer quizz
 $ node server.js   in Terminal
 and go to : http://localhost:8088 with your broswer.
+
+Node modules needed to run:
+$ npm install --save express
+$ npm install --save socket.io
+$ npm install --save chance
+
+
 
 If you want to play again please redo all these steps.
